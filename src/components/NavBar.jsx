@@ -2,6 +2,9 @@ import { useState } from "react";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 import { Button } from "./ui/button";
 import Image from "./Image";
+import { Link } from "react-router-dom";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+
 
 const NavBar = () => {
     const [open, setOpen] = useState(false)
@@ -10,7 +13,7 @@ const NavBar = () => {
     return (
         <div className="w-full h-16 md:h-20 flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center gap-4 text-2xl font-bold">
+            <Link to='/' className="flex items-center gap-4 text-2xl font-bold">
                 <Image
                     src="logo.png"
                     alt="logo"
@@ -18,7 +21,7 @@ const NavBar = () => {
                     h={32}
                 />
                 <span>ZoroBlog</span>
-            </div>
+            </Link>
             {/* mobile menu */}
             <div className="md:hidden">
                 {
@@ -35,29 +38,35 @@ const NavBar = () => {
                         />
                 }
 
-                <ul className={`w-full h-screen bg-[#e6e6ff] flex 
+                <div className={`w-full h-screen bg-[#e6e6ff] flex 
                     flex-col items-center justify-center gap-8 font-medium
                      text-lg absolute top-16 transition-all ease-in-out
                       ${open ? "-right-0" : "-right-[100%]"}
                      `
                 }>
-                    <li>Home</li>
-                    <li>Trending</li>
-                    <li>Most Popular</li>
-                    <li>About</li>
-                    <li>Login</li>
-                </ul>
+                    <Link to='/'>Home</Link>
+                    <Link to='/'>Trending</Link>
+                    <Link to='/'>Most Popular</Link>
+                    <Link to='/'>About</Link>
+                    <Link to='/login'>Login</Link>
+                </div>
             </div>
             {/* desktop menu */}
-            <ul className="hidden md:flex items-center gap-8 xl:gap-12 font-medium">
-                <li>Home</li>
-                <li>Trending</li>
-                <li>Most Popular</li>
-                <li>About</li>
-                <li>
-                    <Button>Login</Button>
-                </li>
-            </ul>
+            <div className="hidden md:flex items-center gap-8 xl:gap-12 font-medium">
+                <Link>Home</Link>
+                <Link>Trending</Link>
+                <Link>Most Popular</Link>
+                <Link>About</Link>
+
+                <SignedOut>
+                    <Link to='/login'>
+                        <Button>Login</Button>
+                    </Link>
+                </SignedOut>
+                <SignedIn>
+                    <UserButton />
+                </SignedIn>
+            </div>
         </div>
     )
 }
