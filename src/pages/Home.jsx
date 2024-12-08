@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import MainCategoryList from "../components/MainCategoryList"
 import PostList from "../components/PostList"
 
