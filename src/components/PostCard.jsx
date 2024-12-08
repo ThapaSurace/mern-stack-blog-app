@@ -31,15 +31,13 @@ const PostCard = () => {
             </div>
 
             {/* Meta Info */}
-            <div className="text-[12px] py-2 flex gap-1 items-center">
-                <span className="text-gray-600">Written by</span>
-                <Link to="#" className="text-blue-800 font-medium">
-                    Zoro
-                </Link>
-                <span className="text-gray-600">on</span>
-                <Link to="#" className="text-blue-800 font-medium">
-                    Web Design
-                </Link>
+            <div className="text-[12px] py-2 flex justify-between items-center px-2">
+                <div className='space-x-1'>
+                    <span>Written by</span>
+                    <Link to="#" className="text-blue-800 font-medium">
+                        Zoro
+                    </Link>
+                </div>
                 <span className="text-gray-600">2 days ago</span>
             </div>
         </div>
