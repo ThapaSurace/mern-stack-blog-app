@@ -1,17 +1,15 @@
 import { Link } from "react-router-dom"
 import MainCategoryList from "../components/MainCategoryList"
+import FeaturedPosts from "../components/FeaturedPosts"
+import PostList from "../components/PostList"
+
 
 const Home = () => {
     return (
-        <div className="mt-4 space-y-4">
-            {/* breadcrumb */}
-            <div className="flex gap-4">
-                <Link to="/">Home</Link>
-                <span>&gt;</span>
-                <span className="text-blue-800">Blogs and Articles</span>
-            </div>
+        <div className="mt-8">
+
             {/* titles */}
-            <div className="">
+            {/* <div className="">
                 <h1 className="text-gray-800 text-2xl md:text-5xl lg:text-6xl font-bold">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 </h1>
@@ -19,9 +17,14 @@ const Home = () => {
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi
                     rerum accusantium.
                 </p>
-            </div>
+            </div> */}
             {/* category lists */}
             <MainCategoryList />
+            {/* <FeaturedPosts /> */}
+            <div className="mt-10">
+                <h1 className="text-2xl font-semibold mb-4 text-slate-800">Recent Posts</h1>
+                <PostList />
+            </div>
         </div>
     )
 }
