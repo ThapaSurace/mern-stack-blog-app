@@ -12,19 +12,25 @@
   "dependencies": {
     "@clerk/clerk-react": "^5.19.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@tanstack/react-query": "^5.62.3",
+    "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "imagekitio-react": "^4.2.0",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^5.4.0",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-quill-new": "^3.3.3",
     "react-router-dom": "^7.0.2",
     "react-select": "^5.8.3",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
+    "@tailwindcss/typography": "^0.5.15",
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc",
     "@vitejs/plugin-react": "^4.3.3",

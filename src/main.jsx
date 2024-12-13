@@ -10,6 +10,14 @@ import LoginPage from './pages/LoginPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
 import MainLayout from './layouts/MainLayout.jsx'
 import { ClerkProvider } from '@clerk/clerk-react'
+import { Toaster } from 'react-hot-toast';
+
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -52,6 +60,12 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
+    </QueryClientProvider>
   </ClerkProvider>
 )

@@ -45,17 +45,17 @@ export const mainCat = [
         path: "/posts?cat=development"
     },
     {
-        id: 5,
+        id: 6,
         name: "Search Engines",
         path: "/posts?cat=seo"
     },
     {
-        id: 6,
+        id: 7,
         name: "Marketing",
         path: "/posts?cat=marketing"
     },
     {
-        id: 7,
+        id: 8,
         name: "AI",
         path: "/posts?cat=ai"
     },
