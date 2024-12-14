@@ -20,8 +20,6 @@ const Write = () => {
     const [video, setVideo] = useState("")
     const [progress, setProgress] = useState(0)
 
-    console.log(img);
-
 
     useEffect(() => {
         img && setContent(prev => prev + `<p><image src="${img.url}" /></p>`)

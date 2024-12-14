@@ -1,27 +1,15 @@
 import { useInfiniteQuery } from "@tanstack/react-query"
 import PostCard from "./PostCard"
-import axios from 'axios'
 import InfiniteScroll from 'react-infinite-scroll-component';
-
-const fetchPosts = async (pageParams) => {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts`, {
-        params: {
-            page: pageParams,
-            limit: 5
-        }
-    })
-    return res.data
-}
+import { fetchPosts } from "../services/postService";
 
 const PostList = () => {
     const {
-        data,
+        data: posts,
         error,
         fetchNextPage,
         hasNextPage,
         isFetching,
-        isFetchingNextPage,
-        status,
     } = useInfiniteQuery({
         queryKey: ["posts"],
         queryFn: ({ pageParam = 1 }) => fetchPosts(pageParam),
@@ -33,6 +21,7 @@ const PostList = () => {
 
     if (isFetching) return <span>loading...</span>
     if (error) return <span>Something went wrong!!</span>
+    if (!posts) return <span>No post found!</span>
 
     /* 
   page 1 = [1,2]
@@ -41,9 +30,8 @@ const PostList = () => {
   using flatmap = we get [1,2,3,4]
 */
 
-    const allPosts = data?.pages.flatMap(page => page.posts) || []
+    const allPosts = posts?.pages.flatMap(page => page.posts) || []
 
-    console.log(data);
     return (
         <InfiniteScroll
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
@@ -51,11 +39,6 @@ const PostList = () => {
             next={fetchNextPage}
             hasMore={!!hasNextPage}
             loader={<h4>Loading more posts...</h4>}
-            endMessage={
-                <p>
-                    <b>All posts loaded!</b>
-                </p>
-            }
         >
             {
                 allPosts.map(post => (
